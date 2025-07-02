@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import sympy as sp
 from matplotlib.animation import FuncAnimation
 
+'''Ensure ffmpeg is installed to properly render animations.'''
+
 x, y, t = sp.symbols('x y t')
 
 dim = (10, 10)  # Range of the plot, (+- x/2, +- y/2).
@@ -14,7 +16,7 @@ z = -sp.sin(sp.sqrt(x ** 2 + y ** 2) + t)  # The function defining the surface.
 
 n1, n2 = 1, 1.33  # Refractive indices of the air and liquid medium, respectively. (For air and water, n1, n2 = 1, 1.33)
 
-phi_0 = np.pi/24  # The angle of the incoming rays with respect to the z-axis.
+phi_0 = 0  # The angle of the incoming rays with respect to the z-axis.
 phi_1 = 0  # The angle with respect to the x-axis.
 
 t_vals = np.linspace(0, 6 * np.pi, num_frames)  # Set the endpoint to a multiple of 2*pi for smooth loops.
