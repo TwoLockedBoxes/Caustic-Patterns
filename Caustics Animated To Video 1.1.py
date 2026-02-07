@@ -15,6 +15,8 @@ z_offset = 10  # How far above the xy-plane the surface is.
 num_frames = 100  # Number of frames in the animation.
 fps = 30  # Frames per second.
 
+open_on_complete = True  # Opens the file once done generating.
+
 
 r = sp.sqrt(x**2 + y**2)  # R for polar.
 theta = sp.atan2(y, x)  # Theta for polar.
@@ -143,4 +145,5 @@ def open_file(filepath):
 ani = FuncAnimation(fig, update, frames=len(t_vals), interval=50, repeat=False)
 ani.save("func_anim.mp4", writer='ffmpeg', fps=fps)
 print('done!')
-open_file("func_anim.mp4")
+if open_on_complete:
+    open_file("func_anim.mp4")
