@@ -1,6 +1,8 @@
+import os
+import platform
 import numpy as np
-import matplotlib.pyplot as plt
 import sympy as sp
+import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 '''Ensure ffmpeg is installed to properly render animations.'''
@@ -8,13 +10,18 @@ from matplotlib.animation import FuncAnimation
 x, y, t = sp.symbols('x y t')
 
 dim = (10, 10)  # Range of the plot, (+- x/2, +- y/2).
-res = 25  # How detailed the surface is.
-z_offset = 3  # How far above the xy-plane the surface is.
-num_frames = 400  # Number of frames in the animation.
+res = 20  # How detailed the surface is.
+z_offset = 10  # How far above the xy-plane the surface is.
+num_frames = 100  # Number of frames in the animation.
+fps = 30  # Frames per second.
 
-z = -sp.sin(sp.sqrt(x ** 2 + y ** 2) + t)  # The function defining the surface.
 
+r = sp.sqrt(x**2 + y**2)  # R for polar.
+theta = sp.atan2(y, x)  # Theta for polar.
+
+z = sp.sin(r - t)  # The function defining the surface.
 n1, n2 = 1, 1.33  # Refractive indices of the air and liquid medium, respectively. (For air and water, n1, n2 = 1, 1.33)
+
 
 phi_0 = 0  # The angle of the incoming rays with respect to the z-axis.
 phi_1 = 0  # The angle with respect to the x-axis.
@@ -88,7 +95,7 @@ def generate_vectors(func, time):
     their corresponding vector components in R_2.'''
 
     # Scale the vector R_2.
-    C = Z / (R_2_z)
+    C = Z / R_2_z
     R_2_x = R_2_x * C
     R_2_y = R_2_y * C
 
@@ -106,12 +113,13 @@ ax.set_xlim(-dim[0]/2, dim[0]/2)
 ax.set_ylim(-dim[1]/2, dim[1]/2)
 ax.set_zlim(0, z_offset)
 
-X, Y, Z, Xs, Ys, Zs = generate_vectors(0)
+X, Y, Z, Xs, Ys, Zs = generate_vectors(z, 0)
 surface = ax.plot_surface(X, Y, Z, cmap='viridis')
 scatter = ax.scatter(Xs, Ys, Zs, color='blue', s=2)
 
 
 def update(frame):
+    print("Generating frame: ", frame, "/", num_frames)
     global surface, scatter
     surface.remove()
     scatter.remove()
@@ -123,11 +131,16 @@ def update(frame):
     return surface, scatter
 
 
+def open_file(filepath):
+    if platform.system() == "Windows":
+        os.startfile(filepath)
+    elif platform.system() == "Darwin":  # macOS
+        os.system(f'open "{filepath}"')
+    else:
+        os.system(f'xdg-open "{filepath}"')
+
+
 ani = FuncAnimation(fig, update, frames=len(t_vals), interval=50, repeat=False)
-ani.save("func_anim.mp4", writer='ffmpeg', fps=30)
-print('done')
-
-# Uncomment these lines to display the plot live.
-#plt.tight_layout()
-#plt.show()
-
+ani.save("func_anim.mp4", writer='ffmpeg', fps=fps)
+print('done!')
+open_file("func_anim.mp4")
