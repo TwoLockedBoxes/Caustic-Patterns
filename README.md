@@ -37,4 +37,25 @@ These variables are sufficient to determine the final trajectory of each light r
     <figcaption>z = cos(r - t)</figcaption>
   </figure>
   
+  <figure style="display:inline-block; width:30%; margin:10px;">
+    <a href="Gallery/cos(t)r^2.gif">
+      <img src="Gallery/cos(t)r^2.gif" width="100%" />
+    </a>
+    <figcaption>z = r^2 * cos(t)</figcaption>
+  </figure>
+  
+  <figure style="display:inline-block; width:30%; margin:10px;">
+    <a href="Gallery/cos(r+theta-t).gif">
+      <img src="Gallery/cos(r+theta-t).gif" width="100%" />
+    </a>
+    <figcaption>z = cos(r + theta - t)</figcaption>
+  </figure>
+  
+  <figure style="display:inline-block; width:30%; margin:10px;">
+    <a href="Gallery/cos(x-t)cos(r-t).gif">
+      <img src="Gallery/cos(x-t)cos(r-t).gif" width="100%" />
+    </a>
+    <figcaption>z = cos(x - t) * cos(r - t)</figcaption>
+  </figure>
+  
 </div>
