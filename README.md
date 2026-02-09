@@ -30,4 +30,11 @@ These variables are sufficient to determine the final trajectory of each light r
     <figcaption>z = cos(x - t) * sin(y - t)</figcaption>
   </figure>
 
+  <figure style="display:inline-block; width:30%; margin:10px;">
+    <a href="Gallery/cos(r-t).gif">
+      <img src="Gallery/cos(r-t).gif" width="100%" />
+    </a>
+    <figcaption>z = cos(r - t)</figcaption>
+  </figure>
+  
 </div>
