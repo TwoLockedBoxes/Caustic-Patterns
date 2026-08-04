@@ -11,6 +11,7 @@
 Neglecting the dependence on wavelength and other minor factors, the angle by which a ray is bent when refracted (not curved, but bent like a corner) is determined by two main factors: 
   the refeactive indicies of the materials, and the angle between the incoming ray and the surface. 
 These variables are sufficient to determine the final trajectory of each light ray, and by following these rays until they strike the floor (z = 0) we can map each input ray to a point on the x-y plane. This is what gives way to the caustic patterns that one sees in pools and many other places. 
+Code can be found here: https://github.com/TwoLockedBoxes/Caustic-Patterns/blob/master/Caustics.py
 
 <h2>Gallery</h2>
 
@@ -60,4 +61,3 @@ These variables are sufficient to determine the final trajectory of each light r
   
 </div>
 
-Code can be found here: https://github.com/TwoLockedBoxes/Caustic-Patterns/blob/master/Caustics.py
