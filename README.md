@@ -59,3 +59,5 @@ These variables are sufficient to determine the final trajectory of each light r
   </figure>
   
 </div>
+
+Code can be found here: https://github.com/TwoLockedBoxes/Caustic-Patterns/blob/master/Caustics.py
